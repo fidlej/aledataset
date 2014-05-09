@@ -13,7 +13,7 @@ Producing of the dataset
     7324a1ebc695a477c8884718ffcad27732a98ab0  roms/seaquest.bin
     31d9668fe5812c3d2e076987ca327ac6b2e280bf  roms/space_invaders.bin
 
-3) Build Arcade Learning Environment.
+3) Build [Arcade Learning Environment](http://www.arcadelearningenvironment.org/)
 
     ./build_ale.sh
 
