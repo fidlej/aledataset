@@ -1,5 +1,28 @@
+local displayFunction = nil
 
-require 'image'
+local ok = pcall(function () require "qt" end)
+if qt then
+   require 'image'
+   local win = nil
+   displayFunction = function (frame)
+      win = image.display({image=frame, win=win})
+   end
+else
+   print('Could not find qt. Maybe you did not run me using "qlua"')
+   print('Trying gfx.js visualizaton')
+   local ok, gfx = pcall(function () return require "gfx.js" end)
+   if ok then      
+      print('Found gfx.js, using gfx visualization, displaying first 100 frames')
+      local win = nil
+      local imgtable = {}
+      displayFunction = function(frame)
+	 if #imgtable <= 100 then table.insert(imgtable, frame) end
+	 if #imgtable == 100 then win = gfx.image(imgtable, {win=win}); end
+      end
+   else
+      error('Run this script either with qlua or with gfx.js')
+   end
+end
 
 local function loadFrames(path)
     local nRows = 209
@@ -19,9 +42,8 @@ local function main()
     local frames = loadFrames(path)
     print("size:", frames:size())
 
-    local win
     for i = 1, frames:size(1) do
-        win = image.display({image=frames[i], win=win})
+       displayFunction(frames[i])
     end
 end
 
