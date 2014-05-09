@@ -1,4 +1,6 @@
-require 'torchffi'
+if not torch.data then
+    require 'torchffi'
+end
 
 local function loadFrames(path)
     local nRows = 209
