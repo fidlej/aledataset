@@ -1,4 +1,5 @@
 require 'torch'
+local ffi = require 'ffi'
 if not torch.data then
     require 'torchffi'
 end
