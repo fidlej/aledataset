@@ -1,3 +1,4 @@
+require 'torch'
 if not torch.data then
     require 'torchffi'
 end
