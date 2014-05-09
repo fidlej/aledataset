@@ -27,7 +27,7 @@ Producing of the dataset
 
 6) See some produced frames.
 
-    qth util/see_frames.lua freeway-train.bin
+    qlua util/see_frames.lua freeway-train.bin
 
 7) Check the SHA1 sums of the produced files.
 
